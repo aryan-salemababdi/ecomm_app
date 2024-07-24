@@ -1,6 +1,18 @@
 import { faker } from '@faker-js/faker/locale/fa';
 
 
-const cartText = `<div>${faker.random.numeric()}</div>`;
+const mount = (el) => {
 
-document.querySelector("#cart-div").innerHTML = cartText;
+    const cartText = `<div>${faker.random.numeric()}</div>`;
+
+    el.innerHTML = cartText;
+};
+
+
+if (process.env.NODE_ENV === "development") {
+    const el = document.querySelector("#div-products");
+    if (el) mount(el)
+};
+
+
+export { mount };
